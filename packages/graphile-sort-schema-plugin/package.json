@@ -9,11 +9,11 @@
   },
   "type": "module",
   "dependencies": {
-    "grafast": "^0.1.1-beta.10",
-    "graphile-build": "^5.0.0-beta.20",
-    "graphile-config": "^0.0.1-beta.8",
-    "graphile-utils": "^5.0.0-beta.24",
-    "tamedevil": "^0.0.0-beta.7"
+    "grafast": "^0.1.1-beta.6",
+    "graphile-build": "^5.0.0-beta.16",
+    "graphile-config": "^0.0.1-beta.7",
+    "graphile-utils": "^5.0.0-beta.20",
+    "tamedevil": "^0.0.0-beta.6"
   },
   "devDependencies": {
     "@spear-ai/eslint-config": "19.0.0",
@@ -31,6 +31,16 @@
     "tsup": "8.0.2",
     "typescript": "5.4.5"
   },
+  "files": [
+    "CHANGELOG.md",
+    "dist"
+  ],
+  "keywords": [
+    "Graphile",
+    "plugin",
+    "schema",
+    "sort"
+  ],
   "license": "MIT",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -51,5 +61,6 @@
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "typescript:check": "tsc --noEmit"
-  }
+  },
+  "types": "./dist/index.d.ts"
 }
