@@ -1650,17 +1650,17 @@ __metadata:
     "@spear-ai/tsconfig": "npm:4.0.0"
     autoprefixer: "npm:10.4.19"
     eslint: "npm:8.57.0"
-    grafast: "npm:^0.1.1-beta.10"
-    graphile-build: "npm:^5.0.0-beta.20"
-    graphile-config: "npm:0.0.1-beta.8"
-    graphile-utils: "npm:^5.0.0-beta.24"
+    grafast: "npm:^0.1.1-beta.6"
+    graphile-build: "npm:^5.0.0-beta.16"
+    graphile-config: "npm:^0.0.1-beta.7"
+    graphile-utils: "npm:^5.0.0-beta.20"
     graphql: "npm:16.8.1"
     npm-package-json-lint: "npm:7.1.0"
     postcss: "npm:8.4.38"
     prettier: "npm:3.2.5"
     react: "npm:18.3.1"
     tailwindcss: "npm:3.4.3"
-    tamedevil: "npm:^0.0.0-beta.7"
+    tamedevil: "npm:^0.0.0-beta.6"
     tsup: "npm:8.0.2"
     typescript: "npm:5.4.5"
   peerDependencies:
@@ -4859,7 +4859,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"grafast@npm:^0.1.1-beta.10":
+"grafast@npm:^0.1.1-beta.6":
   version: 0.1.1-beta.10
   resolution: "grafast@npm:0.1.1-beta.10"
   dependencies:
@@ -4899,7 +4899,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphile-build@npm:^5.0.0-beta.20":
+"graphile-build@npm:^5.0.0-beta.16":
   version: 5.0.0-beta.20
   resolution: "graphile-build@npm:5.0.0-beta.20"
   dependencies:
@@ -4923,7 +4923,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphile-config@npm:0.0.1-beta.8, graphile-config@npm:^0.0.1-beta.8":
+"graphile-config@npm:^0.0.1-beta.7, graphile-config@npm:^0.0.1-beta.8":
   version: 0.0.1-beta.8
   resolution: "graphile-config@npm:0.0.1-beta.8"
   dependencies:
@@ -4940,7 +4940,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphile-utils@npm:^5.0.0-beta.24":
+"graphile-utils@npm:^5.0.0-beta.20":
   version: 5.0.0-beta.24
   resolution: "graphile-utils@npm:5.0.0-beta.24"
   dependencies:
@@ -8359,7 +8359,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tamedevil@npm:^0.0.0-beta.7":
+"tamedevil@npm:^0.0.0-beta.6, tamedevil@npm:^0.0.0-beta.7":
   version: 0.0.0-beta.7
   resolution: "tamedevil@npm:0.0.0-beta.7"
   dependencies:
