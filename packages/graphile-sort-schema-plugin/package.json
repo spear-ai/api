@@ -9,7 +9,11 @@
   },
   "type": "module",
   "dependencies": {
-    "graphile-utils": "5.0.0-beta.24"
+    "grafast": "^0.1.1-beta.10",
+    "graphile-build": "^5.0.0-beta.20",
+    "graphile-config": "^0.0.1-beta.8",
+    "graphile-utils": "^5.0.0-beta.24",
+    "tamedevil": "^0.0.0-beta.7"
   },
   "devDependencies": {
     "@spear-ai/eslint-config": "19.0.0",
