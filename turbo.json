@@ -1,0 +1,108 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "//#commitlint:check": {},
+    "//#eslint:check": {},
+    "//#eslint:fix": {},
+    "//#npmpkgjsonlint:check": {},
+    "//#prettier:check": {},
+    "//#prettier:fix": {},
+    "//#root:fix": {
+      "dependsOn": ["^build"]
+    },
+    "//#typescript:check": {},
+    "build": {
+      "dependsOn": ["^build"],
+      "dotEnv": [".env", ".env.local", ".env.production", ".env.production.local"],
+      "outputs": ["build/**", "dist/**", "storybook-static/**"]
+    },
+    "check": {
+      "dependsOn": [
+        "//#commitlint:check",
+        "//#eslint:check",
+        "//#npmpkgjsonlint:check",
+        "//#prettier:check",
+        "eslint:check",
+        "npmpkgjsonlint:check",
+        "prettier:check",
+        "typescript:check"
+      ]
+    },
+    "commitlint:check": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "eslint:check": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "**/*.cjs",
+        "**/*.code-workspace",
+        "**/*.graphql",
+        "**/*.js",
+        "**/*.json",
+        "**/*.json5",
+        "**/*.jsonc",
+        "**/*.jsx",
+        "**/*.md",
+        "**/*.mjs",
+        "**/*.toml",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.yaml",
+        "**/*.yml",
+        "eslint.config.js",
+        "tsconfig.json"
+      ]
+    },
+    "eslint:fix": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "fix": {
+      "cache": false,
+      "dependsOn": ["//#eslint:fix", "eslint:fix", "//#prettier:fix", "prettier:fix"]
+    },
+    "npmpkgjsonlint:check": {
+      "dependsOn": ["^build"],
+      "inputs": [".npmpackagejsonlintignore", "npmpackagejsonlint.config.cjs", "package.json"]
+    },
+    "prettier:check": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "**/*.cjs",
+        "**/*.code-workspace",
+        "**/*.graphql",
+        "**/*.js",
+        "**/*.json",
+        "**/*.json5",
+        "**/*.jsonc",
+        "**/*.jsx",
+        "**/*.md",
+        "**/*.mjs",
+        "**/*.toml",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.yaml",
+        "**/*.yml",
+        ".prettierignore",
+        "prettier.config.*"
+      ]
+    },
+    "prettier:fix": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "storybook:build": {
+      "dependsOn": ["^build"],
+      "dotEnv": [".env", ".env.local", ".env.production", ".env.production.local"],
+      "outputs": ["storybook-static/**"]
+    },
+    "typescript:check": {
+      "dependsOn": ["^build"],
+      "inputs": ["**/*.cjs", "**/*.js", "**/*.json", "**/*.mjs", "**/*.ts", "**/*.tsx", "tsconfig.json"]
+    }
+  }
+}

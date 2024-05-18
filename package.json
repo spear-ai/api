@@ -1,0 +1,58 @@
+{
+  "name": "@spear-ai/api-monorepo",
+  "version": "1.0.0",
+  "description": "Spear API",
+  "author": {
+    "name": "Spear AI",
+    "email": "org@spear.ai",
+    "url": "https://spear.ai"
+  },
+  "type": "module",
+  "dependencies": {
+    "@changesets/changelog-github": "0.5.0",
+    "@changesets/cli": "2.27.2",
+    "@commitlint/cli": "19.3.0",
+    "@commitlint/types": "19.0.3",
+    "@spear-ai/commitlint-config": "3.1.1",
+    "@spear-ai/eslint-config": "19.0.0",
+    "@spear-ai/npm-package-json-lint-config": "3.1.1",
+    "@spear-ai/prettier-config": "2.2.0",
+    "@spear-ai/tsconfig": "4.0.0",
+    "commitlint": "19.3.0",
+    "eslint": "8.57.0",
+    "graphql": "16.8.1",
+    "husky": "9.0.11",
+    "npm-package-json-lint": "7.1.0",
+    "prettier": "3.2.5",
+    "react": "18.3.1",
+    "tailwindcss": "3.4.3",
+    "turbo": "1.13.3",
+    "typescript": "5.4.5"
+  },
+  "license": "UNLICENSED",
+  "packageManager": "yarn@4.2.2",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spear-ai/api.git"
+  },
+  "scripts": {
+    "version": "changeset version && yarn workspaces foreach -A run sync-version",
+    "commitlint:check": "commitlint --from=HEAD^1",
+    "eslint:check": "eslint --max-warnings 0 .",
+    "eslint:fix": "yarn eslint:check --fix",
+    "github-actions:push": "act push -s GH_PAT=$GH_PAT -s GITHUB_TOKEN=$GH_PAT -s NPM_TOKEN=$NPM_TOKEN",
+    "github-actions:push:release-tag": "act push -e .github/test-events/push-release-tag.json -s GH_PAT=$GH_PAT -s GITHUB_TOKEN=$GH_PAT",
+    "npmpkgjsonlint:check": "npmPkgJsonLint .",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "publish-packages": "yarn run publish-packages:npm && yarn run publish-packages:github && yarn run publish-packages:custom && yarn changeset tag",
+    "publish-packages:custom": "yarn workspaces foreach -A run publish-package",
+    "publish-packages:github": "npm_config_registry=https://npm.pkg.github.com changeset publish --no-git-tag",
+    "publish-packages:npm": "changeset publish --no-git-tag",
+    "typescript:check": "tsc --noEmit"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
