@@ -1,6 +1,6 @@
 {
   "name": "@spear-ai/graphile-sort-schema-plugin",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Graphile plugin to sort your schema",
   "author": {
     "name": "Spear AI",
