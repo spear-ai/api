@@ -267,7 +267,7 @@ input UpdateThingByIdInput {
   """
   An object where the defined keys will be set on the `Thing` being updated.
   """
-  patch: ThingPatch!
+  thingPatch: ThingPatch!
 }
 
 """The output of our update `Thing` mutation."""

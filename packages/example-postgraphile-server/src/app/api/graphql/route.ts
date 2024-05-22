@@ -24,7 +24,7 @@ const preset: GraphileConfig.Preset = {
   schema: {
     dontSwallowErrors: process.env.NODE_ENV === "production",
     exportSchemaSDLPath: path.join(dirname(import.meta.url), "./schema.graphql"),
-    pgSimplifyPatch: true,
+    pgSimplifyPatch: false,
     retryOnInitFail: process.env.NODE_ENV === "development",
     sortExport: true,
   },
