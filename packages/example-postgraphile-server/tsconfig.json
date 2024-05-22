@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "exclude": ["node_modules"],
+  "extends": "@spear-ai/tsconfig",
+  "include": [
+    ".gmrc.cjs",
+    "**/*.cjs",
+    "**/*.cts",
+    "**/*.js",
+    "**/*.mjs",
+    "**/*.mts",
+    "**/*.ts",
+    "types",
+    ".next/types/**/*.ts"
+  ]
+}

@@ -3,6 +3,7 @@
     "recommendations": [
       "bungcip.better-toml",
       "dbaeumer.vscode-eslint",
+      "dorzey.vscode-sqlfluff",
       "esbenp.prettier-vscode",
       "ms-azuretools.vscode-docker",
       "sleistner.vscode-fileutils",
@@ -18,8 +19,16 @@
       "path": ".",
     },
     {
+      "name": "spear-ai/grafserv-next-server",
+      "path": "packages/grafserv-next-server",
+    },
+    {
       "name": "spear-ai/graphile-sort-schema-plugin",
       "path": "packages/graphile-sort-schema-plugin",
+    },
+    {
+      "name": "spear-ai/example-postgraphile-server",
+      "path": "packages/example-postgraphile-server",
     },
   ],
   "settings": {
@@ -40,6 +49,10 @@
     },
     "[markdown]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[sql]": {
+      "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
+      "editor.tabSize": 4,
     },
     "[toml]": {
       "editor.tabSize": 2,
@@ -81,5 +94,8 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
+    "sqlfluff.format.enabled": true,
+    "sqlfluff.linter.run": "onSave",
   },
 }

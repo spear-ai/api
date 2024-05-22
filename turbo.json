@@ -2,6 +2,8 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "//#commitlint:check": {},
+    "//#dotenv-linter:check": {},
+    "//#dotenv-linter:fix": {},
     "//#eslint:check": {},
     "//#eslint:fix": {},
     "//#npmpkgjsonlint:check": {},
@@ -10,21 +12,29 @@
     "//#root:fix": {
       "dependsOn": ["^build"]
     },
+    "//#sqlfluff:check": {
+      "inputs": [".sqlfluff", "packages/*/src/**/*.sql"]
+    },
+    "//#sqlfluff:fix": {},
     "//#typescript:check": {},
     "build": {
       "dependsOn": ["^build"],
       "dotEnv": [".env", ".env.local", ".env.production", ".env.production.local"],
-      "outputs": ["build/**", "dist/**", "storybook-static/**"]
+      "outputs": ["build/**", "dist/**"]
     },
     "check": {
       "dependsOn": [
         "//#commitlint:check",
+        "//#dotenv-linter:check",
         "//#eslint:check",
         "//#npmpkgjsonlint:check",
         "//#prettier:check",
+        "//#sqlfluff:check",
+        "dotenv-linter:check",
         "eslint:check",
         "npmpkgjsonlint:check",
         "prettier:check",
+        "squawk:check",
         "typescript:check"
       ]
     },
@@ -33,7 +43,15 @@
     },
     "dev": {
       "cache": false,
+      "dependsOn": ["pre-dev"],
+      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"],
       "persistent": true
+    },
+    "dotenv-linter:check": {
+      "inputs": [".env", ".env.*"]
+    },
+    "dotenv-linter:fix": {
+      "cache": false
     },
     "eslint:check": {
       "dependsOn": ["^build"],
@@ -63,11 +81,23 @@
     },
     "fix": {
       "cache": false,
-      "dependsOn": ["//#eslint:fix", "eslint:fix", "//#prettier:fix", "prettier:fix"]
+      "dependsOn": [
+        "//#dotenv-linter:fix",
+        "//#eslint:fix",
+        "//#prettier:fix",
+        "dotenv-linter:fix",
+        "eslint:fix",
+        "prettier:fix"
+      ]
     },
     "npmpkgjsonlint:check": {
       "dependsOn": ["^build"],
       "inputs": [".npmpackagejsonlintignore", "npmpackagejsonlint.config.cjs", "package.json"]
+    },
+    "pre-dev": {
+      "cache": false,
+      "dependsOn": ["^pre-dev"],
+      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"]
     },
     "prettier:check": {
       "dependsOn": ["^build"],
@@ -95,10 +125,8 @@
       "cache": false,
       "dependsOn": ["^build"]
     },
-    "storybook:build": {
-      "dependsOn": ["^build"],
-      "dotEnv": [".env", ".env.local", ".env.production", ".env.production.local"],
-      "outputs": ["storybook-static/**"]
+    "squawk:check": {
+      "inputs": [".squawk.toml", "src/**/current/*.sql"]
     },
     "typescript:check": {
       "dependsOn": ["^build"],
