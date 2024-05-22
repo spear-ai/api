@@ -1,4 +1,6 @@
-"""All input for the create `Thing` mutation."""
+"""
+All input for the create `Thing` mutation.
+"""
 input CreateThingInput {
   """
   An arbitrary string value with no semantic meaning. Will be included in the
@@ -6,11 +8,15 @@ input CreateThingInput {
   """
   clientMutationId: String
 
-  """The `Thing` to be created by this mutation."""
+  """
+  The `Thing` to be created by this mutation.
+  """
   thing: ThingInput!
 }
 
-"""The output of our create `Thing` mutation."""
+"""
+The output of our create `Thing` mutation.
+"""
 type CreateThingPayload {
   """
   The exact same `clientMutationId` that was provided in the mutation input,
@@ -23,17 +29,25 @@ type CreateThingPayload {
   """
   query: Query
 
-  """The `Thing` that was created by this mutation."""
+  """
+  The `Thing` that was created by this mutation.
+  """
   thing: Thing
 
-  """An edge for our `Thing`. May be used by Relay 1."""
+  """
+  An edge for our `Thing`. May be used by Relay 1.
+  """
   thingEdge(
-    """The method to use when ordering `Thing`."""
+    """
+    The method to use when ordering `Thing`.
+    """
     orderBy: [ThingOrderBy!]! = [PRIMARY_KEY_ASC]
   ): ThingEdge
 }
 
-"""A location in a connection that can be used for resuming pagination."""
+"""
+A location in a connection that can be used for resuming pagination.
+"""
 scalar Cursor
 
 """
@@ -45,7 +59,9 @@ to unexpected results.
 """
 scalar Datetime
 
-"""All input for the `deleteThingById` mutation."""
+"""
+All input for the `deleteThingById` mutation.
+"""
 input DeleteThingByIdInput {
   """
   An arbitrary string value with no semantic meaning. Will be included in the
@@ -59,7 +75,9 @@ input DeleteThingByIdInput {
   id: ID!
 }
 
-"""The output of our delete `Thing` mutation."""
+"""
+The output of our delete `Thing` mutation.
+"""
 type DeleteThingPayload {
   """
   The exact same `clientMutationId` that was provided in the mutation input,
@@ -73,12 +91,18 @@ type DeleteThingPayload {
   """
   query: Query
 
-  """The `Thing` that was deleted by this mutation."""
+  """
+  The `Thing` that was deleted by this mutation.
+  """
   thing: Thing
 
-  """An edge for our `Thing`. May be used by Relay 1."""
+  """
+  An edge for our `Thing`. May be used by Relay 1.
+  """
   thingEdge(
-    """The method to use when ordering `Thing`."""
+    """
+    The method to use when ordering `Thing`.
+    """
     orderBy: [ThingOrderBy!]! = [PRIMARY_KEY_ASC]
   ): ThingEdge
 }
@@ -87,7 +111,9 @@ type DeleteThingPayload {
 The root mutation type which contains root level fields which mutate data.
 """
 type Mutation {
-  """Creates a single `Thing`."""
+  """
+  Creates a single `Thing`.
+  """
   createThing(
     """
     The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
@@ -95,7 +121,9 @@ type Mutation {
     input: CreateThingInput!
   ): CreateThingPayload
 
-  """Deletes a single `Thing` using its globally unique id."""
+  """
+  Deletes a single `Thing` using its globally unique id.
+  """
   deleteThingById(
     """
     The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
@@ -103,7 +131,9 @@ type Mutation {
     input: DeleteThingByIdInput!
   ): DeleteThingPayload
 
-  """Updates a single `Thing` using its globally unique id and a patch."""
+  """
+  Updates a single `Thing` using its globally unique id and a patch.
+  """
   updateThingById(
     """
     The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
@@ -112,7 +142,9 @@ type Mutation {
   ): UpdateThingPayload
 }
 
-"""An object with a globally unique `ID`."""
+"""
+An object with a globally unique `ID`.
+"""
 interface Node {
   """
   A globally unique identifier. Can be used in various places throughout the system to identify this single value.
@@ -120,31 +152,47 @@ interface Node {
   id: ID!
 }
 
-"""Information about pagination in a connection."""
+"""
+Information about pagination in a connection.
+"""
 type PageInfo {
-  """When paginating forwards, the cursor to continue."""
+  """
+  When paginating forwards, the cursor to continue.
+  """
   endCursor: Cursor
 
-  """When paginating forwards, are there more items?"""
+  """
+  When paginating forwards, are there more items?
+  """
   hasNextPage: Boolean!
 
-  """When paginating backwards, are there more items?"""
+  """
+  When paginating backwards, are there more items?
+  """
   hasPreviousPage: Boolean!
 
-  """When paginating backwards, the cursor to continue."""
+  """
+  When paginating backwards, the cursor to continue.
+  """
   startCursor: Cursor
 }
 
-"""The root query type which gives access points into the data universe."""
+"""
+The root query type which gives access points into the data universe.
+"""
 type Query implements Node {
   """
   The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
   """
   id: ID!
 
-  """Fetches an object given its globally unique `ID`."""
+  """
+  Fetches an object given its globally unique `ID`.
+  """
   node(
-    """The globally unique `ID`."""
+    """
+    The globally unique `ID`.
+    """
     id: ID!
   ): Node
 
@@ -154,24 +202,38 @@ type Query implements Node {
   """
   query: Query!
 
-  """Reads a single `Thing` using its globally unique `ID`."""
+  """
+  Reads a single `Thing` using its globally unique `ID`.
+  """
   thingById(
-    """The globally unique `ID` to be used in selecting a single `Thing`."""
+    """
+    The globally unique `ID` to be used in selecting a single `Thing`.
+    """
     id: ID!
   ): Thing
 
-  """Reads and enables pagination through a set of `Thing`."""
+  """
+  Reads and enables pagination through a set of `Thing`.
+  """
   things(
-    """Read all values in the set after (below) this cursor."""
+    """
+    Read all values in the set after (below) this cursor.
+    """
     after: Cursor
 
-    """Read all values in the set before (above) this cursor."""
+    """
+    Read all values in the set before (above) this cursor.
+    """
     before: Cursor
 
-    """Only read the first `n` values of the set."""
+    """
+    Only read the first `n` values of the set.
+    """
     first: Int
 
-    """Only read the last `n` values of the set."""
+    """
+    Only read the last `n` values of the set.
+    """
     last: Int
 
     """
@@ -180,7 +242,9 @@ type Query implements Node {
     """
     offset: Int
 
-    """The method to use when ordering `Thing`."""
+    """
+    The method to use when ordering `Thing`.
+    """
     orderBy: [ThingOrderBy!] = [PRIMARY_KEY_ASC]
   ): ThingConnection
 }
@@ -196,33 +260,49 @@ type Thing implements Node {
   name: String
 }
 
-"""A connection to a list of `Thing` values."""
+"""
+A connection to a list of `Thing` values.
+"""
 type ThingConnection {
   """
   A list of edges which contains the `Thing` and cursor to aid in pagination.
   """
   edges: [ThingEdge]!
 
-  """A list of `Thing` objects."""
+  """
+  A list of `Thing` objects.
+  """
   nodes: [Thing]!
 
-  """Information to aid in pagination."""
+  """
+  Information to aid in pagination.
+  """
   pageInfo: PageInfo!
 
-  """The count of *all* `Thing` you could get from the connection."""
+  """
+  The count of *all* `Thing` you could get from the connection.
+  """
   totalCount: Int!
 }
 
-"""A `Thing` edge in the connection."""
+"""
+A `Thing` edge in the connection.
+"""
 type ThingEdge {
-  """A cursor for use in pagination."""
+  """
+  A cursor for use in pagination.
+  """
   cursor: Cursor
 
-  """The `Thing` at the end of the edge."""
+  """
+  The `Thing` at the end of the edge.
+  """
   node: Thing
 }
 
-"""An input for mutations affecting `Thing`"""
+"""
+An input for mutations affecting `Thing`
+"""
 input ThingInput {
   createdDatetime: Datetime
   modifiedDatetime: Datetime
@@ -230,7 +310,9 @@ input ThingInput {
   rowId: UUID
 }
 
-"""Methods to use when ordering `Thing`."""
+"""
+Methods to use when ordering `Thing`.
+"""
 enum ThingOrderBy {
   NATURAL
   PRIMARY_KEY_ASC
@@ -251,7 +333,9 @@ A universally unique identifier as defined by [RFC 4122](https://tools.ietf.org/
 """
 scalar UUID
 
-"""All input for the `updateThingById` mutation."""
+"""
+All input for the `updateThingById` mutation.
+"""
 input UpdateThingByIdInput {
   """
   An arbitrary string value with no semantic meaning. Will be included in the
@@ -270,7 +354,9 @@ input UpdateThingByIdInput {
   thingPatch: ThingPatch!
 }
 
-"""The output of our update `Thing` mutation."""
+"""
+The output of our update `Thing` mutation.
+"""
 type UpdateThingPayload {
   """
   The exact same `clientMutationId` that was provided in the mutation input,
@@ -283,12 +369,18 @@ type UpdateThingPayload {
   """
   query: Query
 
-  """The `Thing` that was updated by this mutation."""
+  """
+  The `Thing` that was updated by this mutation.
+  """
   thing: Thing
 
-  """An edge for our `Thing`. May be used by Relay 1."""
+  """
+  An edge for our `Thing`. May be used by Relay 1.
+  """
   thingEdge(
-    """The method to use when ordering `Thing`."""
+    """
+    The method to use when ordering `Thing`.
+    """
     orderBy: [ThingOrderBy!]! = [PRIMARY_KEY_ASC]
   ): ThingEdge
 }

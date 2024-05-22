@@ -35,7 +35,7 @@ const getDigest = (request: NextRequest): RequestDigest => {
 
 const send = (result: Result | null) => {
   if (result == null) {
-    return new NextResponse("¯\\_(ツ)_/¯", { status: 404 });
+    return new NextResponse(String.raw`¯\_(ツ)_/¯`, { status: 404 });
   }
 
   switch (result.type) {
