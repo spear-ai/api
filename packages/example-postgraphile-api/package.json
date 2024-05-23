@@ -1,7 +1,7 @@
 {
-  "name": "@spear-ai/example-postgraphile-server",
+  "name": "@spear-ai/example-postgraphile-api",
   "version": "1.0.0",
-  "description": "Example PostGraphile server",
+  "description": "Example PostGraphile API",
   "author": {
     "name": "Spear AI",
     "email": "org@spear.ai",
@@ -44,7 +44,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "directory": "packages/example-postgraphile-server",
+    "directory": "packages/example-postgraphile-api",
     "url": "https://github.com/spear-ai/api.git"
   },
   "scripts": {
@@ -65,6 +65,7 @@
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "squawk:check": "squawk --assume-in-transaction src/migrations/current/*.sql",
+    "start": "next start",
     "typescript:check": "tsc --noEmit"
   }
 }

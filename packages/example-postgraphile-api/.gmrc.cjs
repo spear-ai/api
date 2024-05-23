@@ -1,5 +1,5 @@
 const graphileMigrateConfig = {
-  connectionString: "postgresql://postgres:postgres@localhost:5432/postgres",
+  connectionString: process.env.POSTGRES_URL,
   migrationsFolder: "src/migrations",
 };
 
