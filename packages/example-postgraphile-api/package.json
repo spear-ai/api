@@ -58,7 +58,7 @@
     "migrate:dev": "dotenv-run -e development -- graphile-migrate watch",
     "migrate:up": "dotenv-run -e production -- graphile-migrate watch --once",
     "next:build": "next build",
-    "next:dev": "next dev",
+    "next:dev": "next dev --turbo",
     "next:start": "next start",
     "npmpkgjsonlint:check": "npmPkgJsonLint .",
     "pre-dev": "yarn database:pre-dev",
