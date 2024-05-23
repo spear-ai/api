@@ -1895,7 +1895,7 @@ __metadata:
     react-dom: "npm:18.3.1"
     ruru: "patch:ruru@npm%3A2.0.0-beta.12#~/.yarn/patches/ruru-npm-2.0.0-beta.12-299bc077af.patch"
     tailwindcss: "npm:3.4.3"
-    tamedevil: "npm:^0.0.0-0"
+    tamedevil: "npm:^0.0.0-1.1"
     tsup: "npm:8.0.2"
     typescript: "npm:5.4.5"
   peerDependencies:
@@ -1925,7 +1925,7 @@ __metadata:
     prettier: "npm:3.2.5"
     react: "npm:18.3.1"
     tailwindcss: "npm:3.4.3"
-    tamedevil: "npm:^0.0.0-0"
+    tamedevil: "npm:^0.0.0-1.1"
     tsup: "npm:8.0.2"
     typescript: "npm:5.4.5"
   peerDependencies:
@@ -9726,7 +9726,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tamedevil@npm:^0.0.0-0, tamedevil@npm:^0.0.0-beta.7":
+"tamedevil@npm:^0.0.0-1.1, tamedevil@npm:^0.0.0-beta.7":
   version: 0.0.0-beta.7
   resolution: "tamedevil@npm:0.0.0-beta.7"
   dependencies:
