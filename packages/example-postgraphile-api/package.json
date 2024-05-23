@@ -28,7 +28,7 @@
     "@spear-ai/tsconfig": "4.0.0",
     "autoprefixer": "10.4.19",
     "concurrently": "8.2.2",
-    "eslint": "8.57.0",
+    "eslint": "9.3.0",
     "graphile-migrate": "2.0.0-rc.2",
     "graphql": "16.8.1",
     "npm-package-json-lint": "7.1.0",

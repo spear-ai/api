@@ -21,7 +21,7 @@
     "@spear-ai/prettier-config": "2.2.0",
     "@spear-ai/tsconfig": "4.0.0",
     "autoprefixer": "10.4.19",
-    "eslint": "8.57.0",
+    "eslint": "9.3.0",
     "grafserv": "0.1.1-beta.12",
     "graphql": "16.8.1",
     "next": "14.2.3",
