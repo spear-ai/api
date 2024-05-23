@@ -1,6 +1,6 @@
 {
   "name": "@spear-ai/example-postgraphile-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Example PostGraphile API",
   "author": {
     "name": "Spear AI",
