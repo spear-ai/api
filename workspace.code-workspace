@@ -27,8 +27,8 @@
       "path": "packages/graphile-sort-schema-plugin",
     },
     {
-      "name": "spear-ai/example-postgraphile-server",
-      "path": "packages/example-postgraphile-server",
+      "name": "spear-ai/example-postgraphile-api",
+      "path": "packages/example-postgraphile-api",
     },
   ],
   "settings": {

@@ -15,6 +15,15 @@ const nextConfig = {
     ],
   },
   poweredByHeader: false,
+  redirects() {
+    return [
+      {
+        destination: "/api/graphiql",
+        permanent: false,
+        source: "/",
+      },
+    ];
+  },
   typescript: {
     ignoreBuildErrors: true,
   },

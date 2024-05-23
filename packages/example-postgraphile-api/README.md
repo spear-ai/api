@@ -1,4 +1,4 @@
-# @spear-ai/example-postgraphile-server
+# @spear-ai/example-postgraphile-api
 
 An example [PostGraphile](https://postgraphile.org) server to test against custom plugins.
 

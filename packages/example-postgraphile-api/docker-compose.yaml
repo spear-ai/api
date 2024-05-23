@@ -1,7 +1,7 @@
-name: forerunner-database
+name: example-postgraphile-api
 services:
   postgresql:
-    container_name: postgraphile-postgresql
+    container_name: example-postgraphile-api-postgresql
     environment:
       PGHOST: /var/run/postgresql
       POSTGRES_DB: postgres
