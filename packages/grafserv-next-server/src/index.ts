@@ -2,7 +2,6 @@ import {
   convertHandlerResultToResult,
   getBodyFromFrameworkBody,
   GrafservBase,
-  GrafservConfig,
   normalizeRequest,
   processHeaders,
   RequestDigest,
@@ -10,63 +9,93 @@ import {
 } from "grafserv";
 import { NextRequest, NextResponse } from "next/server";
 
-const getDigest = (request: NextRequest): RequestDigest => {
-  console.log(request);
+const getDigest = (request: NextRequest): RequestDigest => ({
+  async getBody() {
+    return getBodyFromFrameworkBody(await request.text());
+  },
+  getQueryParams() {
+    return request.nextUrl.searchParams as unknown as Record<string, string>;
+  },
+  headers: processHeaders(Object.fromEntries(request.headers.entries())),
+  // There doesn’t seem to be a way to get the HTTP version from Next.js’ route handler.
+  // Grafserv uses this information to determine whether to set `keep-alive`.
+  httpVersionMajor: 2,
+  httpVersionMinor: 0,
+  isSecure: request.nextUrl.protocol === "https",
+  method: request.method,
+  path: request.url,
+  preferJSON: true,
+  requestContext: {},
+});
 
-  return {
-    async getBody() {
-      return getBodyFromFrameworkBody(await request.text());
-    },
-    getQueryParams() {
-      return request.nextUrl.searchParams as unknown as Record<string, string>;
-    },
-    headers: processHeaders(Object.fromEntries(request.headers.entries())),
-    // There doesn’t seem to be a way to get the HTTP version from Next.js’ route handler.
-    // Grafserv uses this information to determine whether to set `keep-alive`.
-    httpVersionMajor: 2,
-    httpVersionMinor: 0,
-    isSecure: request.nextUrl.protocol === "https",
-    method: request.method,
-    path: request.url,
-    preferJSON: true,
-    requestContext: {},
-  };
-};
+type HandleResponse = (
+  response: NextResponse,
+  result: Result | null,
+) => NextResponse | Promise<NextResponse>;
 
-const send = (result: Result | null) => {
+const send = async (result: Result | null, onResponse?: HandleResponse | undefined) => {
+  let response: NextResponse | undefined;
+
   if (result == null) {
-    return new NextResponse(String.raw`¯\_(ツ)_/¯`, { status: 404 });
+    response = new NextResponse(String.raw`¯\_(ツ)_/¯`, { status: 404 });
+  } else {
+    const { headers, statusCode: status, type } = result;
+
+    switch (type) {
+      case "buffer": {
+        response = new NextResponse(result.buffer, { headers, status });
+        break;
+      }
+      case "bufferStream": {
+        response = new NextResponse("Next.js Grafserv doesn’t handle `bufferStream`.", {
+          headers,
+          status,
+        });
+        break;
+      }
+      case "error": {
+        response = new NextResponse("Error", { headers, status });
+        break;
+      }
+      case "json": {
+        response = NextResponse.json(result.json, { headers, status });
+        break;
+      }
+      case "noContent": {
+        response = new NextResponse(null, { headers, status });
+        break;
+      }
+      default: {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        response = new NextResponse(`Next.js Grafserv doesn’t handle \`${type}\`.`, {
+          headers,
+          status: 503,
+        });
+        break;
+      }
+    }
   }
 
-  switch (result.type) {
-    case "buffer": {
-      return new NextResponse(result.buffer, { headers: result.headers, status: result.statusCode });
-    }
-    case "bufferStream": {
-      return new NextResponse("BufferStream currently unimplemented", {
-        headers: result.headers,
-        status: result.statusCode,
-      });
-    }
-    case "error": {
-      return new NextResponse("Error", { headers: result.headers, status: result.statusCode });
-    }
-    case "json": {
-      return NextResponse.json(result.json, { headers: result.headers, status: result.statusCode });
-    }
-    case "noContent": {
-      return new NextResponse(null, { headers: result.headers, status: result.statusCode });
-    }
-    default: {
-      return new NextResponse("Server hasn't implemented this yet", {
-        headers: { type: "text/plain" },
-        status: 503,
-      });
-    }
+  if (onResponse) {
+    response = await onResponse(response, result);
   }
+
+  return response;
 };
 
 export class NextGrafserv extends GrafservBase {
+  /** Handle and modify the NextResponse. */
+  onResponse: HandleResponse | undefined;
+
+  constructor(
+    config: ConstructorParameters<typeof GrafservBase>[0] & {
+      onResponse?: HandleResponse | undefined;
+    },
+  ) {
+    super(config);
+    this.onResponse = config.onResponse;
+  }
+
   createGraphQLHandler() {
     return (request: NextRequest) => this.handleRequest(request);
   }
@@ -75,8 +104,8 @@ export class NextGrafserv extends GrafservBase {
     const digest = getDigest(request);
     const handler = await this.graphqlHandler(normalizeRequest(digest), this.graphiqlHandler);
     const result = await convertHandlerResultToResult(handler);
-    return send(result);
+    return send(result, this.onResponse);
   }
 }
 
-export const grafserv = (config: GrafservConfig) => new NextGrafserv(config);
+export const grafserv = (config: ConstructorParameters<typeof NextGrafserv>[0]) => new NextGrafserv(config);
