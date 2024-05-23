@@ -16,7 +16,7 @@ const preset: GraphileConfig.Preset = {
   },
   pgServices: [
     makePgService({
-      connectionString: process.env.POSTGRES_URL ?? "postgresql://postgres:postgres@localhost:5432/postgres",
+      connectionString: process.env.POSTGRES_URL ?? "",
       schemas: ["public"],
     }),
   ],
