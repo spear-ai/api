@@ -20,7 +20,7 @@
     "build": {
       "dependsOn": ["^build"],
       "dotEnv": [".env", ".env.local", ".env.production", ".env.production.local"],
-      "outputs": ["build/**", "dist/**"]
+      "outputs": ["build/**", "dist/**", ".next"]
     },
     "check": {
       "dependsOn": [
