@@ -1884,7 +1884,7 @@ __metadata:
     grafast: "npm:^0.1.1-0"
     grafserv: "npm:0.1.1-beta.12"
     graphile-build: "npm:^5.0.0-0"
-    graphile-config: "npm:^0.0.1-0"
+    graphile-config: "npm:^0.0.1-1.2"
     graphile-utils: "npm:^5.0.0-0"
     graphql: "npm:16.8.1"
     next: "npm:14.2.3"
@@ -1917,7 +1917,7 @@ __metadata:
     eslint: "npm:8.57.0"
     grafast: "npm:^0.1.1-0"
     graphile-build: "npm:^5.0.0-0"
-    graphile-config: "npm:^0.0.1-0"
+    graphile-config: "npm:^0.0.1-1.2"
     graphile-utils: "npm:^5.0.0-0"
     graphql: "npm:16.8.1"
     npm-package-json-lint: "npm:7.1.0"
@@ -5676,7 +5676,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphile-config@npm:^0.0.1-0, graphile-config@npm:^0.0.1-beta.8, graphile-config@npm:^0.0.1-beta.9":
+"graphile-config@npm:^0.0.1-1.2, graphile-config@npm:^0.0.1-beta.8, graphile-config@npm:^0.0.1-beta.9":
   version: 0.0.1-beta.9
   resolution: "graphile-config@npm:0.0.1-beta.9"
   dependencies:

@@ -11,7 +11,7 @@
   "dependencies": {
     "grafast": "^0.1.1-0",
     "graphile-build": "^5.0.0-0",
-    "graphile-config": "^0.0.1-0",
+    "graphile-config": "^0.0.1-1.2",
     "graphile-utils": "^5.0.0-0",
     "tamedevil": "^0.0.0-0"
   },
