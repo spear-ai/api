@@ -1,0 +1,18 @@
+name: forerunner-database
+services:
+  postgresql:
+    container_name: postgraphile-postgresql
+    environment:
+      PGHOST: /var/run/postgresql
+      POSTGRES_DB: postgres
+      POSTGRES_HOST: /var/run/postgresql
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    healthcheck:
+      interval: 3s
+      retries: 10
+      test: pg_isready -h postgresql -U postgres -d postgres
+      timeout: 3s
+    image: supabase/postgres:15.1.1.52
+    ports:
+      - 5432:5432
