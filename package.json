@@ -37,7 +37,6 @@
     "url": "https://github.com/spear-ai/api.git"
   },
   "resolutions": {
-    "@spear-ai/eslint-config": "portal:/Users/dtorres/Work/dev/spear-ai/citizen/packages/eslint-config",
     "ruru@npm:^2.0.0-beta.12": "patch:ruru@npm%3A2.0.0-beta.12#~/.yarn/patches/ruru-npm-2.0.0-beta.12-299bc077af.patch"
   },
   "scripts": {
