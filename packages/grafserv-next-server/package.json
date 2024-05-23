@@ -1,6 +1,6 @@
 {
   "name": "@spear-ai/grafserv-next-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Graserv server for Next.js",
   "author": {
     "name": "Spear AI",
